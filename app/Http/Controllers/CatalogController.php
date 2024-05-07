@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Catalog;
+use Illuminate\Support\Facades\Crypt;
 
 class CatalogController extends Controller
 {
@@ -29,5 +30,18 @@ class CatalogController extends Controller
         $item = Catalog::query()->where('id', $id)->get();
         $item[0]['image'] = asset($item[0]['image']);
         return inertia('Item', compact('item'));
+    }
+
+    public function item_store(Request $request) {
+        $request->validate([
+            'first_name' => ['required', 'max:50'],
+            'last_name' => ['required', 'max:50'],
+            'email' => ['required', 'max:50', 'email'],
+            'number' => ['required', 'max:50'],
+            'items' => ['required'],
+        ]);
+        $items = Crypt::encryptString(json_encode($request->input('items')));
+        dd(json_decode(Crypt::decryptString($items)));
+        return to_route('success');
     }
 }

@@ -31,7 +31,7 @@ const decrement = () => {
 </script>
 
 <template>
-    <div class="flex justify-between items-center border w-20 h-16 px-2" :class="[MaxItemColor ? 'border-red-500' : 'border-black']">
+    <div class="flex justify-between items-center border w-60 sm:w-20 h-16 px-2" :class="[MaxItemColor ? 'border-red-500' : 'border-black']">
         <button @click="decrement" class="h-full transition-all ease-out duration-700 active:-translate-y-1">
             -
         </button>

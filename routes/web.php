@@ -37,13 +37,21 @@ Route::get('/cart', function () {
     ]);
 })->name('cart');
 
+Route::get('/success', function () {
+    return Inertia::render('Success', [
+    ]);
+})->name('success');
+
+
 Route::get('/about-us', function () {
     return Inertia::render('AboutUs', [
     ]);
 })->name('AboutUs');
 
 Route::get('/catalog', [CatalogController::class, 'catalog'])->name('catalog');
+
 Route::get('/item/{id}', [CatalogController::class, 'item'])->name('item');
+Route::post('/item', [CatalogController::class, 'item_store'])->name('item.store');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
