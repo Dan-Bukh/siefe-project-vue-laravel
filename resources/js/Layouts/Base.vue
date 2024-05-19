@@ -2,6 +2,10 @@
 import { Link } from '@inertiajs/vue3';
 
 let AddedItemsInCart = localStorage.length ? localStorage.length : '';
+const pathnameChecked = (path) => {
+    return location.pathname == path;
+}
+
 </script>
 
 <template>
@@ -19,16 +23,13 @@ let AddedItemsInCart = localStorage.length ? localStorage.length : '';
 
             <div class="flex justify-center">
                 <div class="flex">
-<!--                    <Link :href="route('home')">-->
-<!--                        <img class="mx-auto pt-8" src="images/logo.png" alt="logo">-->
-<!--                    </Link>-->
                 </div>
             </div>
             <div class="mt-4">
                 <nav>
-                    <ul class="flex justify-center text-lg font-light tracking-widest">
-                        <li class="leading-loose mx-4 hover:text-slate-400 transition ease-out duration-300"><Link :href="route('catalog')">Магазин</Link></li>
-                        <li class="leading-loose mx-4 hover:text-slate-400 transition ease-out duration-300"><Link :href="route('AboutUs')">О проекте</Link></li>
+                    <ul class="flex justify-center text-md sm:text-lg font-light sm:font-mono sm:tracking-widest ">
+                        <li class="leading-loose mx-4 hover:text-slate-400 transition ease-out duration-300" :class="pathnameChecked('/catalog') ? 'text-slate-400' : ''"><Link :href="route('catalog')">Geschäft</Link></li>
+                        <li class="leading-loose mx-4 hover:text-slate-400 transition ease-out duration-300" :class="pathnameChecked('/about-us') ? 'text-slate-400' : ''"><Link :href="route('AboutUs')">über das Projekt</Link></li>
                     </ul>
                 </nav>
                 <hr class="mt-3">
@@ -41,7 +42,7 @@ let AddedItemsInCart = localStorage.length ? localStorage.length : '';
             <div class="w-full  bg-slate-100">
                 <div>
                     <hr class="mb-3">
-                        <p class="text-center text-slate-500">Натуралья Косметика</p>
+                        <p class="text-center text-slate-500">Natürliche Seife und Kosmetik</p>
                     <hr class="mt-3">
                 </div>
             </div>

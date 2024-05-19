@@ -30,7 +30,7 @@ watch(searchQuery, value => {
         <!-- items -->
         <div>
             <div class="flex justify-end mx-20 mt-4">
-                <input v-model="searchQuery" class="rounded-xl" type="text" placeholder="Search..." />
+                <input v-model="searchQuery" class="rounded-xl" type="text" placeholder="Suchen..." />
             </div>
             <div class="lg:flex mt-5 mb-28">
                 <!-- NavigationItems -->
@@ -38,13 +38,13 @@ watch(searchQuery, value => {
                 <!-- NavigationItems -->
                 <div>
                     <div class="flex flex-wrap">
-                            <div v-for="card in cards" :key="card.id" class="w-80 mx-3 mb-10 shadow-2xl p-2 hover:opacity-85 transition-all ease-out duration-700 hover:-translate-y-2 hover:scale-100">
+                            <div v-for="(card, name) in cards" :key="card.id" class="w-80 mx-3 mb-10 shadow-2xl p-2 hover:opacity-85 transition-all ease-out duration-700 hover:-translate-y-2 hover:scale-100">
                                 <Link :href="route('item', card.id)">
                                     <div>
-                                        <img :src="card.image" alt="">
+                                        <img :src="card.image[0]" alt="">
                                     </div>
                                     <p class="text-lg font-light">{{ card.title }}</p>
-                                    <p class="text-md font-light">{{ card.price }} руб.</p>
+                                    <p class="text-md font-light">{{ card.price }} €.</p>
                                 </Link>
                             </div>
                     </div>
