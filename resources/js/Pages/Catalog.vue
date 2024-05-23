@@ -38,8 +38,8 @@ watch(searchQuery, value => {
                 <!-- NavigationItems -->
                 <div>
                     <div class="flex flex-wrap">
-                            <div v-for="(card, name) in cards" :key="card.id" class="w-80 mx-3 mb-10 shadow-2xl p-2 hover:opacity-85 transition-all ease-out duration-700 hover:-translate-y-2 hover:scale-100">
-                                <Link :href="route('item', card.id)">
+                            <div v-for="card in cards" :key="card.id" class="w-80 mx-3 mb-10 shadow-2xl p-2 hover:opacity-85 transition-all ease-out duration-700 hover:-translate-y-2 hover:scale-100">
+                                <Link :href="route('catalog.show', card.id)">
                                     <div>
                                         <img :src="card.image[0]" alt="">
                                     </div>

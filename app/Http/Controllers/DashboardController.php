@@ -3,34 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
-use Carbon\Carbon;
+use App\Services\OrderService;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Crypt;
 use Inertia\Response;
 
 class DashboardController extends Controller
 {
-    public function orders(): Response {
+    public function index(Order $orders): Response {
         /**
-         * Получаем заказы, сортируем "последние северху", декодируем json объект корзины.
+         * Получаем заказы, сортируем "новые сверху", декодируем json объект корзины(Accessor).
          */
-        $orders = Order::query()->latest('created_at')->get();
-        for($i = 0; $i < count($orders); $i++) {
-            $orders[$i]['items'] = json_decode(Crypt::decryptString($orders[$i]['items']));
-        }
-
+        $orders = $orders->GetLatestOrders();
         return inertia('Dashboard', compact('orders'));
     }
 
-    public function order_destroy(Request $request): RedirectResponse {
-        /**
-         * Удаляем заказ.
-         */
-        $validated = $request->validate([
-            'id_order' => ['required', 'numeric'],
-        ]);
-        Order::destroy($validated['id_order']);
+    public function destroy($id): RedirectResponse {
+        Order::destroy($id);
         return redirect(route('dashboard'));
     }
 }

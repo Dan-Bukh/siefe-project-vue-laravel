@@ -22,8 +22,8 @@ return new class extends Migration
             $table->text('content');
             $table->string('image');
             $table->timestamps();
-            // ['category', "title", 'price', 'count', 'content', 'image'];
         });
+        // ['category', "title", 'price', 'count', 'content', 'image']
     }
 
     /**

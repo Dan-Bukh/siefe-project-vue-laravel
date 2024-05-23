@@ -17,10 +17,11 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('number');
             $table->string('email');
-            $table->longText('items');
+            $table->text('items');
             $table->timestamps();
+            $table->softDeletes();
         });
-//        'first_name', 'last_name', 'items', 'number', 'email'
+        // ['first_name', 'last_name', 'items', 'number', 'email']
     }
 
     /**

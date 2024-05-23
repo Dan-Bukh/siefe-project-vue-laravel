@@ -1,6 +1,11 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
+import { Head } from '@inertiajs/vue3';
 import BaseLayout from '@/Layouts/Base.vue';
+let props = defineProps({
+    imageBg: {
+        type: String,
+    },
+});
 </script>
 
 <template>
@@ -21,7 +26,7 @@ import BaseLayout from '@/Layouts/Base.vue';
                         </p>
                     </div>
                     <div class="w-96">
-                        <img class="object-contain" src="images/aboutUS.jpg" alt="">
+                        <img class="object-contain" :src="props.imageBg" alt="">
                     </div>
                 </div>
             </div>

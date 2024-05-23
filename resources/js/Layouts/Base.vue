@@ -29,7 +29,7 @@ const pathnameChecked = (path) => {
                 <nav>
                     <ul class="flex justify-center text-md sm:text-lg font-light sm:font-mono sm:tracking-widest ">
                         <li class="leading-loose mx-4 hover:text-slate-400 transition ease-out duration-300" :class="pathnameChecked('/catalog') ? 'text-slate-400' : ''"><Link :href="route('catalog')">Geschäft</Link></li>
-                        <li class="leading-loose mx-4 hover:text-slate-400 transition ease-out duration-300" :class="pathnameChecked('/about-us') ? 'text-slate-400' : ''"><Link :href="route('AboutUs')">über das Projekt</Link></li>
+                        <li class="leading-loose mx-4 hover:text-slate-400 transition ease-out duration-300" :class="pathnameChecked('/about-us') ? 'text-slate-400' : ''"><Link :href="route('about_us')">über das Projekt</Link></li>
                     </ul>
                 </nav>
                 <hr class="mt-3">

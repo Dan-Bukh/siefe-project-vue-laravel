@@ -12,7 +12,7 @@ import BaseLayout from '@/Layouts/Base.vue';
                 <p class="text-xl md:text-3xl text-slate-400 text-center">Bestellung erfolgreich abgeschlossen</p>
             </div>
             <div class="flex justify-center h-1/5">
-                <p class="text-3xl md:text-6xl text-blue-400 text-center">Vielen Dank für die Bestellung!</p>
+                <p class="text-3xl md:text-6xl text-indigo-400 text-center">Vielen Dank für die Bestellung!</p>
             </div>
         </div>
     </BaseLayout>

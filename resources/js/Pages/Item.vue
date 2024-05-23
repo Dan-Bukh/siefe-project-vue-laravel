@@ -5,16 +5,14 @@ import NavigationItems from '@/Components/NavigationItems.vue';
 import Counter from '@/Components/Counter.vue';
 import {provide, ref} from "vue";
 
-let howMuch = ref(1)
-provide('howMuch', howMuch)
-
-
-
 defineProps({
     item: {
         type: Array,
     },
 });
+
+let howMuch = ref(1)
+provide('howMuch', howMuch)
 
 const NotExistInCart = ref(true);
 const toCart = (item, howMuch) => {
@@ -49,7 +47,6 @@ let CurrentImage = ref(0);
                                 data-twe-carousel-indicators>
                                 <button v-for="(image, key) in item[0]['image']" :key="key"
                                     @click="(e) => {
-                                        console.log(image, key);
                                         CurrentImage = e.target.attributes[2].nodeValue;
                                     }"
                                     type="button"
@@ -97,9 +94,9 @@ let CurrentImage = ref(0);
                             </div>
                         </div>
                         <p class="text-lg font-light text-slate-600 mb-4">{{ item[0].price }} €.</p>
-                        <p class="font-light text-slate-600 mb-4">Auf Lager: {{ item[0].count }} шт.</p>
-                        <p class="font-light text-slate-600 mb-4">
-                            {{ item[0].content }}
+                        <p class="font-light text-slate-600 mb-4">Auf Lager: {{ item[0].count }} Stück.</p>
+                        <p v-for="(text, key) in item[0].content[0]" :key="key" class="font-light text-slate-600 mb-4">
+                            {{ text }}
                         </p>
                     </div>
                 </div>

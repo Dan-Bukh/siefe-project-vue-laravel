@@ -1,7 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import {Head, Link, router} from '@inertiajs/vue3';
-import {reactive} from "vue";
+import { Head, Link } from '@inertiajs/vue3';
 
 let props = defineProps({
     orders: {
@@ -9,9 +8,6 @@ let props = defineProps({
     },
 });
 
-function submit(id) {
-    router.post('/dashboard', {id_order: id});
-}
 </script>
 
 <template>
@@ -30,11 +26,11 @@ function submit(id) {
                     <div class="flex flex-wrap">
                         <div v-for="order in orders" :key="order.id" class="bg-white w-1/3 mx-3 mb-10 shadow-2xl p-2 hover:opacity-85 transition-all ease-out duration-700 hover:-translate-y-2 hover:scale-100 rounded-lg">
                                 <div>
-                                    <span>Номер Заказа: {{ order.id }} / Дата: {{ new Date(order.created_at).toString() }}</span>
+                                    <span>Номер Заказа: {{ order.id }} / Дата: {{ order.created_at }}</span>
                                     <div>
-                                        <button @dblclick="submit(order.id)" class="bg-red-700 w-10 text-center active:bg-green-800">
+                                        <Link as="button" :href="route('order.destroy', order)" method="delete" class="bg-red-700 w-10 text-center active:bg-green-800">
                                             X
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div class="flex justify-around">
@@ -47,7 +43,7 @@ function submit(id) {
                                 </div>
                                 <div v-for="item in order.items" :key="item.id" class="flex flex-col border-2 border-black rounded-lg mb-2 p-2">
                                     <p class="flex justify-center text-md font-light"><span class="font-medium">Кол-во: </span>{{ item[1] }}</p>
-                                    <p class="flex justify-center text-md font-light"><span class="font-medium">Название: </span>{{ item[0].title }}</p>
+                                    <p class="flex justify-center text-md font-light"><span class="font-medium">Название: </span>{{ item[0] }}</p>
                                 </div>
 
                         </div>

@@ -24,19 +24,18 @@ const GetSumAllItems = () => {
 }
 GetSumAllItems();
 
-
+const ItemsForSubmit = ItemsArray.map((x) => [x[0].title, x[1]]);
 const form = reactive({
     first_name: null,
     last_name: null,
     number: null,
     email: null,
-    items: ItemsArray,
+    items: ItemsForSubmit,
 })
 function submit() {
     localStorage.clear();
     router.post('/cart', form)
 }
-console.log(ItemsArray);
 </script>
 
 <template>
@@ -58,8 +57,8 @@ console.log(ItemsArray);
             <div v-for="item in ItemsArray" :key="item[0].id" class="w-full px-1 md:w-4/5 border-b py-4">
                 <div class="flex gap-2 items-center h-auto sm:h-24">
                         <div class="flex items-center w-2/5 gap-6">
-                            <a :href="route('item', item[0].id)" target="_blank"><img class="hidden md:block object-fill h-16 min-w-16" :src="item[0].image[0]" alt="item"></a>
-                            <a :href="route('item', item[0].id)" target="_blank"><p>{{ item[0].title }}</p></a>
+                            <a :href="route('catalog.show', item[0].id)" target="_blank"><img class="hidden md:block object-fill h-16 min-w-16" :src="item[0].image[0]" alt="item"></a>
+                            <a :href="route('catalog.show', item[0].id)" target="_blank"><p>{{ item[0].title }}</p></a>
                         </div>
                     <p class="w-1/5 text-center">{{ item[0].price }} €.</p>
                     <div class="flex justify-center w-1/5">
