@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Catalog;
+use App\Models\Image;
 use Illuminate\Database\Seeder;
 
 
@@ -14,5 +15,6 @@ class CatalogSeeder extends Seeder
     public function run(): void
     {
         Catalog::factory(5)->create();
+        Image::factory(5)->create();
     }
 }

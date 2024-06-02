@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class CatalogFactory extends Factory
+class ImageFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,11 +17,8 @@ class CatalogFactory extends Factory
     public function definition(): array
     {
         return [
-            'category' => 'soap',
-            'title' => fake()->word(),
-            'price' => rand(3, 6),
-            'count' => rand(3, 6),
-            'content' => array([0 => fake()->realText(100), 1 => fake()->realText(), 3 => fake()->realText(300)]),
+            'catalog_id' => rand(1, 5),
+            'path' => 'images/' . rand(1, 8),
         ];
     }
 }

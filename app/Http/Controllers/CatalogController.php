@@ -15,7 +15,9 @@ class CatalogController extends Controller
          * потом разбиваем данные, делаем из строки массив фотографий
          * и дополняем им локалный путь.
          */
-        $cards = $service->ImagesExplodeWithFor($catalog->GetCardsWithFilters($request));
+        dd(Catalog::all()[0]->images);
+        dd($catalog->GetCardsWithFilters($request));
+        //$cards = $service->ImagesExplodeWithFor($catalog->GetCardsWithFilters($request));
         $filters = $request->only('search', 'category');
         return inertia('Catalog', compact('cards', 'filters'));
     }
