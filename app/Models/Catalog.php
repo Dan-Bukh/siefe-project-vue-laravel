@@ -11,22 +11,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Catalog extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'category', "title", 'price',
-        'count', 'content',
+        'count', 'content', 'image',
         'created_at', 'updated_at',
         ];
     protected $table = 'catalog';
 
-    public function images(): HasMany
-    {
-        return $this->hasMany(Image::class, 'catalog_id', 'id');
-    }
-
-    public function GetCardById($id) :Collection {
+    public function GetCardById($id): Collection {
         return Catalog::query()->where('id', $id)->get();
     }
-    public function GetCardsWithFilters($request) :Collection {
+    
+    public function GetCardsWithFilters($request): Collection {
         return Catalog::query()
             ->when($request->input('search'), function($query, $search) {
                 $query->where('title', 'like', "%{$search}%");

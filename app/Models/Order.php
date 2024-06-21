@@ -12,6 +12,7 @@ class Order extends Model
 {
     use HasFactory;
     use SoftDeletes;
+
     protected $fillable = [
         'first_name', 'last_name',
         'items', 'number', 'email',
@@ -26,7 +27,7 @@ class Order extends Model
         ];
     }
 
-    public function GetLatestOrders() :Collection {
+    public function GetLatestOrders(): Collection {
         return Order::query()->latest('created_at')->get();
     }
 

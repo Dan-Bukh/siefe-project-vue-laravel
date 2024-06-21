@@ -22,6 +22,7 @@ class CatalogFactory extends Factory
             'price' => rand(3, 6),
             'count' => rand(3, 6),
             'content' => array([0 => fake()->realText(100), 1 => fake()->realText(), 3 => fake()->realText(300)]),
+            'image' => 'images/' . rand(1, 8)
         ];
     }
 }

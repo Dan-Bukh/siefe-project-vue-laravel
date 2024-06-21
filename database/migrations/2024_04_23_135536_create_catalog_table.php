@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('price');
             $table->string('count');
             $table->text('content');
+            $table->string('image');
             $table->timestamps();
         });
         // ['category', "title", 'price', 'count', 'content', 'image']

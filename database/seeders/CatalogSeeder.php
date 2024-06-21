@@ -15,6 +15,5 @@ class CatalogSeeder extends Seeder
     public function run(): void
     {
         Catalog::factory(5)->create();
-        Image::factory(5)->create();
     }
 }
